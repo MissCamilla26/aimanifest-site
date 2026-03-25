@@ -7,7 +7,7 @@
 
   // ========== CONFIG ==========
   // Remplacer par l'URL du Google Apps Script déployé
-  var GOOGLE_SHEETS_URL = 'https://formspree.io/f/xyzxyzxy';
+  var GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbw3ya51ivhi0xqLNkxZz4ixnDLqBfjjdRDUAiIY6K0_9mRle3iadWfaS-si76fzJ1PPgg/exec';
 
   // ========== SCROLL ANIMATIONS ==========
   var observer = new IntersectionObserver(function(entries) {
