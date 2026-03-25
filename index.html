@@ -11,6 +11,7 @@
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#0A1628">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="canonical" href="https://aimanifest.io/">
   <link rel="stylesheet" href="styles.css">
   <script type="application/ld+json">
@@ -233,7 +234,8 @@
           </div>
         </div>
         <div class="fade-up">
-          <form class="form-dark" action="#" method="POST">
+          <form class="form-dark" method="POST">
+            <div class="form-hp" aria-hidden="true" style="position:absolute;left:-9999px;"><label for="q-website">Ne pas remplir</label><input type="text" id="q-website" name="website" tabindex="-1" autocomplete="off"></div>
             <div class="form-row">
               <div class="form-group">
                 <label for="q-prenom">Prénom</label>
@@ -319,33 +321,6 @@
     </div>
   </footer>
 
-  <script>
-    // Scroll animations
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) { entry.target.classList.add('visible'); }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-    // Form submission with confirmation
-    document.querySelectorAll('form').forEach(form => {
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const prenom = this.querySelector('input[name="prenom"]')?.value || '';
-        const btn = this.querySelector('button[type="submit"]');
-        const originalText = btn.textContent;
-        btn.textContent = '✓ Merci ' + prenom + ' ! On revient vers vous rapidement.';
-        btn.style.background = '#22c55e';
-        btn.style.pointerEvents = 'none';
-        setTimeout(() => {
-          btn.textContent = originalText;
-          btn.style.background = '';
-          btn.style.pointerEvents = '';
-          this.reset();
-        }, 4000);
-      });
-    });
-  </script>
+  <script src="scripts.js"></script>
 </body>
 </html>

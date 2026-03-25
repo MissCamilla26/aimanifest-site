@@ -11,6 +11,7 @@
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#0A1628">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="canonical" href="https://aimanifest.io/rejoindre">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -195,11 +196,12 @@
         <div class="fade-up">
           <span class="tag" style="display:inline-block;background:rgba(245,166,35,0.15);color:#F5A623;font-size:0.8rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;padding:6px 16px;border-radius:100px;">Rejoindre la liste</span>
           <h2 style="color:#fff;margin-top:20px;">Inscrivez-vous sur la liste d'attente</h2>
-          <p style="margin-top:16px;">On construit le collectif pas à pas. Les premières places sont limitées — inscrivez-vous pour être parmi les premiers informés quand on ouvre les portes.</p>
+          <p style="margin-top:16px;">On construit le collectif pas à pas. Les premières places sont limitées — inscrivez-vous pour être parmi les premiers à bénéficier d'une formation.</p>
           <p style="margin-top:24px;font-size:0.95rem;opacity:0.7;">Nous vous recontacterons dès que des missions seront disponibles dans votre domaine.</p>
         </div>
         <div class="fade-up">
-          <form class="form-dark" action="#" method="POST">
+          <form class="form-dark" method="POST">
+            <div class="form-hp" aria-hidden="true" style="position:absolute;left:-9999px;"><label for="r-website">Ne pas remplir</label><input type="text" id="r-website" name="website" tabindex="-1" autocomplete="off"></div>
             <div class="form-row">
               <div class="form-group">
                 <label for="r-prenom">Prénom</label>
@@ -223,7 +225,7 @@
             <div class="form-row">
               <div class="form-group">
                 <label for="r-domaine">Domaine d'expertise</label>
-                <select id="r-domaine" name="domaine" required>
+                <select id="r-domaine" name="domaine" required onchange="document.getElementById('r-domaine-autre-wrap').style.display = this.value === 'autre' ? 'block' : 'none';">
                   <option value="">Sélectionnez</option>
                   <option value="rh">Ressources Humaines</option>
                   <option value="achats">Achats & Procurement</option>
@@ -231,11 +233,15 @@
                   <option value="pricing">Pricing & Appels d'offres</option>
                   <option value="autre">Autre</option>
                 </select>
+                <div id="r-domaine-autre-wrap" style="display:none;margin-top:8px;">
+                  <input type="text" id="r-domaine-autre" name="domaine_autre" placeholder="Précisez votre domaine..." style="width:100%;">
+                </div>
               </div>
               <div class="form-group">
                 <label for="r-xp">Années d'expérience</label>
                 <select id="r-xp" name="experience" required>
                   <option value="">Sélectionnez</option>
+                  <option value="2-3">2 – 3 ans</option>
                   <option value="3-5">3 – 5 ans</option>
                   <option value="5-10">5 – 10 ans</option>
                   <option value="10-15">10 – 15 ans</option>
@@ -297,26 +303,6 @@
     </div>
   </footer>
 
-  <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) { entry.target.classList.add('visible'); }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-    document.querySelectorAll('form').forEach(form => {
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const prenom = this.querySelector('input[name="prenom"]')?.value || '';
-        const btn = this.querySelector('button[type="submit"]');
-        const originalText = btn.textContent;
-        btn.textContent = '✓ Merci ' + prenom + ' ! Vous êtes sur la liste.';
-        btn.style.background = '#22c55e';
-        btn.style.pointerEvents = 'none';
-        setTimeout(() => { btn.textContent = originalText; btn.style.background = ''; btn.style.pointerEvents = ''; this.reset(); }, 4000);
-      });
-    });
-  </script>
+  <script src="scripts.js"></script>
 </body>
 </html>
