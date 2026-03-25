@@ -7,7 +7,7 @@
 
   // ========== CONFIG ==========
   // Remplacer par l'URL du Google Apps Script déployé
-  var GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbw3ya51ivhi0xqLNkxZz4ixnDLqBfjjdRDUAiIY6K0_9mRle3iadWfaS-si76fzJ1PPgg/exec';
+  var GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzpGy_w6nWDRrSxFNhtI5t2TuE-YkejLJdLGxopkbifZ8uFp2Mi3qpFT-ZypvaR32BhWA/exec';
 
   // ========== SCROLL ANIMATIONS ==========
   var observer = new IntersectionObserver(function(entries) {
